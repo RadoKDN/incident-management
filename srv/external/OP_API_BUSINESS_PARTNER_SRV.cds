@@ -3,7 +3,7 @@
 @m.IsDefaultEntityContainer : 'true'
 @sap.message.scope.supported : 'true'
 @sap.supported.formats : 'atom json xlsx'
-service OP_API_BUSINESS_PARTNER_SRV {
+service apihub_sandbox {
   @cds.external : true
   @cds.persistence.skip : true
   @sap.content.version : '1'

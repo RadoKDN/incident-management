@@ -13,19 +13,14 @@
   },
   "cds": {
     "requires": {
-      "db": {
-        "kind": "hana",
-        "[development]": {
-          "kind": "sqlite",
-          "credentials": {
-            "database": "db.sqlite"
-          }
-        }
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
       },
       "auth": {
         "kind": "xsuaa",
         "[development]": {
-          "kind": "mocked",
+          "kind": "dummy",
           "users": {
             "default": {
               "roles": [
@@ -46,12 +41,17 @@
           }
         }
       },
-      "OP_API_BUSINESS_PARTNER_SRV": {
+      "apihub_sandbox": {
         "kind": "odata-v2",
         "model": "srv/external/OP_API_BUSINESS_PARTNER_SRV",
-        "credentials": {
-          "url": "http://localhost:4005"
-        }
+        "[production]": {
+          "credentials": {
+            "destination": "apihub_sandbox",
+            "path": "/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
       }
     },
     "model": [
